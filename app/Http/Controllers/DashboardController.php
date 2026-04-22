@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LokasiKantor;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -14,7 +15,8 @@ class DashboardController extends Controller
                                   ->orderByDesc('tanggal')
                                   ->limit(10)
                                   ->get();
+        $lokasi         = LokasiKantor::first();
 
-        return view('dashboard', compact('pegawai', 'absensiHariIni', 'riwayat'));
+        return view('dashboard', compact('pegawai', 'absensiHariIni', 'riwayat', 'lokasi'));
     }
 }
